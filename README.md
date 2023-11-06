@@ -44,7 +44,7 @@ Now you're ready to rock with the API, however, the only two endpoints accesible
 
 ## Creating an user
 
-To create an user you'll need to stop the API, manually edit the line X of the [Users Controller](./BallastLane/BallastLane.API/Controllers/UsersController.cs) to comment the *[Authenticate]* decorator to allow anonymous users. Once you do so you can create an user, make sure you include a password that:
+To create an user you'll need to stop the API, manually edit the line 9 of the [Users Controller](./BallastLane/BallastLane.API/Controllers/UsersController.cs) to comment the *[Authenticate]* decorator to allow anonymous users. Once you do so you can create an user, make sure you include a password that:
 
 - Has at least 8 chars in length.
 - Includes at least an uppercase and a lowercase letter.
