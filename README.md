@@ -10,7 +10,7 @@ Open the [Solution File](./BallastLane/BallastLane.sln) with Visual Studio, it m
 
 ![API Bootup](./img/run.png "API Bootup")
 
-The API will boot and a default browser window will open, the default route that will be opened is the health check at '/':
+The API will boot and a default browser window will open, the initial route that will be opened is the health check at '/':
 
 ![API Health Check](./img/HealthCheck.png "API Health Check")
 
@@ -24,17 +24,17 @@ The Database is not required to boot the API but to perform any operation you'll
 
 We assume you have Docker Desktop installed in your system.
 
-A [Docker Compose](docker-compose.yaml) files is provided to install and run MongoDB engine and the Mongo Express UI. Run the following command:
+A [Docker Compose](docker-compose.yaml) file is provided to install and run MongoDB engine and the Mongo Express UI. Run the following command:
 
 ```
 docker-compose up -d
 ```
 
-it will start pulling the required images and configuring the MongoDB engine and Mongo Express UI. Observe that for the MongoDB engine the user/password combination set is *admin/password*, this values are also being set in the Mongo Express so it can access the MongoDB engine, however, once the Mongo Express is up and running you can navicate to *localhost:8081* to access the Mongo Express UI and will be propmpted for credentials, for this case use *admin/pass* values.
+it will start pulling the required images and configuring the MongoDB engine and Mongo Express UI. Observe that for the MongoDB engine the user/password combination was set as *admin/password*, those values are also being set in the Mongo Express so it can access the MongoDB engine, however, for Mongo Express UI you must use *admin/pass*:
 
 ![Docker Desktop](./img/compose.png "Docker Desktop")
 
-once you're logged into the Mongo Express UI create a Database named *ballastlane* and two collections within it: *clients* and *users*:
+once the Mongo Express is up and running you can navigate to *localhost:8081* to access the Mongo Express UI and you will be propmpted for credentials. after you're logged into the Mongo Express UI create a Database named *ballastlane* and two collections within it: *clients* and *users*:
 
 ![Mongo DB and collections](./img/collections.png "Mongo DB and collections")
 
@@ -44,7 +44,7 @@ Now you're ready to rock with the API, however, the only two endpoints accesible
 
 ## Creating an user
 
-To create an user you'll need to stop the API, manually edit the line 9 of the [Users Controller](./BallastLane/BallastLane.API/Controllers/UsersController.cs) to comment the *[Authenticate]* decorator to allow anonymous users. Once you do so you can create an user, make sure you include a password that:
+To create an user you'll need to stop the API, manually edit the line 9 of the [Users Controller](./BallastLane/BallastLane.API/Controllers/UsersController.cs) to comment the *[Authenticate]* attribute to allow anonymous users. Once you do it you can create an user using the Users methods in Swagger, make sure you include a password that:
 
 - Has at least 8 chars in length.
 - Includes at least an uppercase and a lowercase letter.
@@ -63,4 +63,3 @@ Observe that the Payload to create an user is provided in the swagger, just make
   "Password": "YOUR PASSWORD"
 }
 ```
-
